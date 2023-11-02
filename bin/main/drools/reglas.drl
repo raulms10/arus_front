@@ -1,0 +1,28 @@
+package drools;
+
+import java.text.SimpleDateFormat;
+import arus_frontend.bean.RegistroBean;
+
+rule "Registro de persona indicando la administradora de pensión AFP003 Colpensiones y la fecha de afiliación es menor a 2021/01/01"
+	when 
+		$registro: RegistroBean(adminPension  == "AFP003", fechaPension < new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2021"))
+	then
+		$registro.setMensajeExcepcion("Para la administradora de pensión AFP003 solo es posible afiliarse después de  2020/12/31");
+		System.out.println("Ejecutada regla 1");
+end
+
+rule "Registro de persona con tipo de documento RC Registro civil, y con las administradoras de EPS003 Coomeva ó EPS004 Medimas"
+	when 
+		$registro: RegistroBean(tipoDocumento  == "RC", adminSalud  == "EPS003" || adminSalud == "EPS004")
+	then
+		$registro.setMensajeExcepcion("Para una persona con tipo de documento 'RC' (Registro civil) no es permitido afiliarse a las EPS: EPS003 - Coomeva, EPS004 - Medimas");
+		System.out.println("Ejecutada regla 2");
+end
+
+rule "Registro de persona con la administradora de salud EPS002  Sura EPS y la administradora de pensión es diferente de AFP001 Protección"
+	when
+		$registro: RegistroBean(adminSalud  == "EPS002", adminPension  != "AFP001")
+	then
+		$registro.setMensajeExcepcion("Las personas que se afilien a la administradora 'EPS002 - Sura EPS' solo pueden afiliarse a la administradora de pensión 'AFP001 - Protección");
+		System.out.println("Ejecutada regla 3");
+end

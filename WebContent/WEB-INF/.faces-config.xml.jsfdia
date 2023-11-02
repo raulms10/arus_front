@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#pages#greeting.xhtml"
+  PATH="/pages/greeting.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#inputname.xhtml"
+  PATH="/pages/inputname.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#inputname.xhtml:0" NAME="item"
+   PATH="/pages/inputname.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="greeting::#pages#greeting.xhtml"
+    NAME="output" PATH="/pages/greeting.xhtml"
+    TARGET="rules:#pages#greeting.xhtml" TITLE="greeting" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#registro.xhtml"
+  PATH="/pages/registro.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#registro.xhtml:0" NAME="item"
+   PATH="/pages/registro.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="lista::#pages#lista.xhtml" NAME="output"
+    PATH="/pages/lista.xhtml" TARGET="rules:#pages#lista.xhtml"
+    TITLE="lista" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#lista.xhtml" PATH="/pages/lista.xhtml"
+  SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#lista.xhtml:0" NAME="item"
+   PATH="/pages/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="registro::#pages#registro.xhtml"
+    NAME="output" PATH="/pages/registro.xhtml"
+    TARGET="rules:#pages#registro.xhtml" TITLE="registro" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

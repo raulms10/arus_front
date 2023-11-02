@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Formulario registro</title>
+	<link href="../resources/registro.css" rel="stylesheet" type="text/css" />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet"
+		href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</h:head>
+<h:body>
+	<div id="divFormulario">
+		<h:form id="formRegistroSaludPension">
+			<div>
+				<h2>Formulario de afiliación al Sistema de Seguridad Social</h2>
+			</div>
+			<hr />
+			<div id="divTipoYNumeroDocumento">
+				<div>
+					<h:outputLabel for="idTipoDoc" value="Tipo de documento:" />
+					<h:selectOneMenu label="tipo de documento" id="idTipoDoc"
+						value="#{registro.tipoDocumento}">
+						<f:selectItems value="#{registro.tiposDeDocumento}" />
+						<f:validator validatorId="validaObligatorio"/>
+					</h:selectOneMenu>
+					<h:message for="idTipoDoc" style="color: red" />
+				</div>
+				<br />
+				<div>
+					<h:outputLabel for="idNumeroDoc" value="Numero de documento:" />
+					<h:inputText label="número de documento" id="idNumeroDoc"
+						value="#{registro.numeroDocumento}">
+						<f:validator validatorId="validaObligatorio"/>
+						<f:validator validatorId="validaNumeroDocumento"/>
+					</h:inputText>
+					<h:message for="idNumeroDoc" style="color: red" />
+				</div>
+			</div>
+			<hr />
+			<div id="divNombresCompletos">
+				<div>
+					<h:outputLabel for="idPrimerNombre" value="Primer nombre: " />
+					<h:inputText label="primer nombre" id="idPrimerNombre"
+						value="#{registro.primerNombre}">
+						<f:validator validatorId="validaObligatorio"/>
+						<f:validator validatorId="validaSoloLetras"/>
+					</h:inputText>
+					<h:message for="idPrimerNombre" style="color: red" />
+				</div>
+				<br />
+				<div>
+					<h:outputLabel for="idSegundoNombre" value="Segundo nombre: " />
+					<h:inputText label="segundo nombre" id="idSegundoNombre"
+						value="#{registro.segundoNombre}">
+						<f:validator validatorId="validaObligatorio"/>
+						<f:validator validatorId="validaSoloLetras"/>
+					</h:inputText>
+					<h:message for="idSegundoNombre" style="color: red" />
+				</div>
+				<br />
+				<div>
+					<h:outputLabel for="idPrimerApellido" value="Primer apellido: " />
+					<h:inputText label="primer apellido" id="idPrimerApellido"
+						value="#{registro.primerApellido}">
+						<f:validator validatorId="validaObligatorio"/>
+						<f:validator validatorId="validaSoloLetras"/>
+					</h:inputText>
+					<h:message for="idPrimerApellido" style="color: red" />
+				</div>
+				<br />
+				<div>
+					<h:outputLabel for="idSegundoApellido" value="Segundo apellido: " />
+					<h:inputText label="segundo apellido" id="idSegundoApellido"
+						value="#{registro.segundoApellido}">
+						<f:validator validatorId="validaObligatorio"/>
+						<f:validator validatorId="validaSoloLetras"/>
+					</h:inputText>
+					<h:message for="idSegundoApellido" style="color: red" />
+				</div>
+			</div>
+			<hr />
+			<div id="divAdministradoraSalud">
+				<h:outputLabel for="idAdminSalud" value="Administradora de salud: " />
+				<h:selectOneMenu label="administradora de salud" id="idAdminSalud"
+					value="#{registro.adminSalud}">
+					<f:selectItems value="#{registro.administradorasSalud}" />
+					<f:validator validatorId="validaObligatorio"/>
+				</h:selectOneMenu>
+				<h:message for="idAdminSalud" style="color: red" />
+			</div>
+			<br />
+			<div id="divFechaSalud">
+				<h:outputLabel for="idFechaSalud"
+					value="Fecha de afiliacion a salud:" />
+				<h:inputText label="fecha de afiliacion a salud" id="idFechaSalud"
+					value="#{registro.fechaSalud}" class="datepicker"
+					converter="convertidorFecha">
+					<f:validator validatorId="validaObligatorio"/>
+				</h:inputText>
+				<h:message for="idFechaSalud" style="color: red" />
+			</div>
+			<hr />
+			<div id="divAdministradoraPension">
+				<h:outputLabel for="idAdminPension"
+					value="Administradora de pensión: " />
+				<h:selectOneMenu label="administradora de pensión"
+					id="idAdminPension" value="#{registro.adminPension}">
+					<f:selectItems value="#{registro.administradorasPension}" />
+					<f:validator validatorId="validaObligatorio"/>
+				</h:selectOneMenu>
+				<h:message for="idAdminPension" style="color: red" />
+			</div>
+			<br />
+			<div id="divFechaPension">
+				<h:outputLabel for="idFechaPension"
+					value="Fecha de afiliacion a pensión:" />
+				<h:inputText label="fecha de afiliacion a pensión"
+					id="idFechaPension" value="#{registro.fechaPension}"
+					class="datepicker" converter="convertidorFecha">
+					<f:validator validatorId="validaObligatorio"/>
+				</h:inputText>
+				<h:message for="idFechaPension" style="color: red" />
+			</div>
+			<hr />
+			<div>
+				<h:commandButton id="idBtnRegistrar" value="Guardar" styleClass="button-guardar"
+					action="#{registro.registrar}" onclick="return validarFormulario()">
+				</h:commandButton>
+			</div>
+			<h:messages />
+		</h:form>
+		<br />
+		<div>
+			<h:form>
+				<h:commandButton id="idBtnVerLista" value="Ver Afiliaciones" action="#{registro.verAfiliaciones}"/>
+			</h:form>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function() {
+			 $(".datepicker").datepicker({
+			 	dateFormat: "dd/mm/yy"
+			 });
+		 });
+		function validarFormulario() {
+			console.log('Test');
+			var errors = false;
+			var num = jQuery( "#idTipoDoc" ).val();
+			jQuery('#idTipoDoc').append('<span class="error"> Este campo es requerido. </span>' );
+			console.log(num);
+			jQuery('form').find('.required').each( function() {
+				
+// 				if ( jQuery.trim( jQuery( "#" + this.id ).val() ) == "" ) {
+// 			    	//jQuery( "#" + this.id ).parent().append/*.after*/( '<div class="error"> Este campo es requerido. </div>' );
+// 			    	errors = true;
+// 			    	console.log('Vacio');
+// 	    		}
+	    		console.log(this);
+	    		console.log(this.id);
+		    });
+			console.log('Tests');
+			return confirm('Se va a afiliar a la persona al sistema de seguridad social ¿Continuar?');
+// 			return true;
+		}
+	</script>
+	<script>
+		 
+	</script>
+</h:body>
+</html>
