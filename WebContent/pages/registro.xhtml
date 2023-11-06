@@ -13,19 +13,19 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </h:head>
 <h:body>
-	<div id="divFormulario">
+	<div class="cont-card" id="divFormulario">
 		<h:form id="formRegistroSaludPension">
 			<div>
-				<h2>Formulario de afiliación al Sistema de Seguridad Social</h2>
+				<h1>Formulario de afiliación al Sistema de Seguridad Social</h1>
 			</div>
-			<hr />
-			<div id="divTipoYNumeroDocumento">
+<!-- 			<hr /> -->
+			<div class="cont-card" id="divTipoYNumeroDocumento">
 				<div>
 					<h:outputLabel for="idTipoDoc" value="Tipo de documento:" />
 					<h:selectOneMenu label="tipo de documento" id="idTipoDoc"
 						value="#{registro.tipoDocumento}">
 						<f:selectItems value="#{registro.tiposDeDocumento}" />
-						<f:validator validatorId="validaObligatorio"/>
+						<f:validator validatorId="validaObligatorio" />
 					</h:selectOneMenu>
 					<h:message for="idTipoDoc" style="color: red" />
 				</div>
@@ -34,20 +34,20 @@
 					<h:outputLabel for="idNumeroDoc" value="Numero de documento:" />
 					<h:inputText label="número de documento" id="idNumeroDoc"
 						value="#{registro.numeroDocumento}">
-						<f:validator validatorId="validaObligatorio"/>
-						<f:validator validatorId="validaNumeroDocumento"/>
+						<f:validator validatorId="validaObligatorio" />
+						<f:validator validatorId="validaNumeroDocumento" />
 					</h:inputText>
 					<h:message for="idNumeroDoc" style="color: red" />
 				</div>
 			</div>
-			<hr />
-			<div id="divNombresCompletos">
+			<!-- 			<hr /> -->
+			<div class="cont-card" id="divNombresCompletos">
 				<div>
 					<h:outputLabel for="idPrimerNombre" value="Primer nombre: " />
 					<h:inputText label="primer nombre" id="idPrimerNombre"
 						value="#{registro.primerNombre}">
-						<f:validator validatorId="validaObligatorio"/>
-						<f:validator validatorId="validaSoloLetras"/>
+						<f:validator validatorId="validaObligatorio" />
+						<f:validator validatorId="validaSoloLetras" />
 					</h:inputText>
 					<h:message for="idPrimerNombre" style="color: red" />
 				</div>
@@ -56,8 +56,8 @@
 					<h:outputLabel for="idSegundoNombre" value="Segundo nombre: " />
 					<h:inputText label="segundo nombre" id="idSegundoNombre"
 						value="#{registro.segundoNombre}">
-						<f:validator validatorId="validaObligatorio"/>
-						<f:validator validatorId="validaSoloLetras"/>
+						<f:validator validatorId="validaObligatorio" />
+						<f:validator validatorId="validaSoloLetras" />
 					</h:inputText>
 					<h:message for="idSegundoNombre" style="color: red" />
 				</div>
@@ -66,8 +66,8 @@
 					<h:outputLabel for="idPrimerApellido" value="Primer apellido: " />
 					<h:inputText label="primer apellido" id="idPrimerApellido"
 						value="#{registro.primerApellido}">
-						<f:validator validatorId="validaObligatorio"/>
-						<f:validator validatorId="validaSoloLetras"/>
+						<f:validator validatorId="validaObligatorio" />
+						<f:validator validatorId="validaSoloLetras" />
 					</h:inputText>
 					<h:message for="idPrimerApellido" style="color: red" />
 				</div>
@@ -76,59 +76,64 @@
 					<h:outputLabel for="idSegundoApellido" value="Segundo apellido: " />
 					<h:inputText label="segundo apellido" id="idSegundoApellido"
 						value="#{registro.segundoApellido}">
-						<f:validator validatorId="validaObligatorio"/>
-						<f:validator validatorId="validaSoloLetras"/>
+						<f:validator validatorId="validaObligatorio" />
+						<f:validator validatorId="validaSoloLetras" />
 					</h:inputText>
 					<h:message for="idSegundoApellido" style="color: red" />
 				</div>
 			</div>
-			<hr />
-			<div id="divAdministradoraSalud">
-				<h:outputLabel for="idAdminSalud" value="Administradora de salud: " />
-				<h:selectOneMenu label="administradora de salud" id="idAdminSalud"
-					value="#{registro.adminSalud}">
-					<f:selectItems value="#{registro.administradorasSalud}" />
-					<f:validator validatorId="validaObligatorio"/>
-				</h:selectOneMenu>
-				<h:message for="idAdminSalud" style="color: red" />
+			<!-- 			<hr /> -->
+			<div class="cont-card">
+				<div id="divAdministradoraSalud">
+					<h:outputLabel for="idAdminSalud" value="Administradora de salud: " />
+					<h:selectOneMenu label="administradora de salud" id="idAdminSalud"
+						value="#{registro.adminSalud}">
+						<f:selectItems value="#{registro.administradorasSalud}" />
+						<f:validator validatorId="validaObligatorio" />
+					</h:selectOneMenu>
+					<h:message for="idAdminSalud" style="color: red" />
+				</div>
+				<br />
+				<div id="divFechaSalud">
+					<h:outputLabel for="idFechaSalud"
+						value="Fecha de afiliacion a salud:" />
+					<h:inputText label="fecha de afiliacion a salud" id="idFechaSalud"
+						value="#{registro.fechaSalud}" class="datepicker"
+						converter="convertidorFecha">
+						<f:validator validatorId="validaObligatorio" />
+					</h:inputText>
+					<h:message for="idFechaSalud" style="color: red" />
+				</div>
 			</div>
-			<br />
-			<div id="divFechaSalud">
-				<h:outputLabel for="idFechaSalud"
-					value="Fecha de afiliacion a salud:" />
-				<h:inputText label="fecha de afiliacion a salud" id="idFechaSalud"
-					value="#{registro.fechaSalud}" class="datepicker"
-					converter="convertidorFecha">
-					<f:validator validatorId="validaObligatorio"/>
-				</h:inputText>
-				<h:message for="idFechaSalud" style="color: red" />
+			<!-- 			<hr /> -->
+			<div class="cont-card">
+				<div id="divAdministradoraPension">
+					<h:outputLabel for="idAdminPension"
+						value="Administradora de pensión: " />
+					<h:selectOneMenu label="administradora de pensión"
+						id="idAdminPension" value="#{registro.adminPension}">
+						<f:selectItems value="#{registro.administradorasPension}" />
+						<f:validator validatorId="validaObligatorio" />
+					</h:selectOneMenu>
+					<h:message for="idAdminPension" style="color: red" />
+				</div>
+				<br />
+				<div id="divFechaPension">
+					<h:outputLabel for="idFechaPension"
+						value="Fecha de afiliacion a pensión:" />
+					<h:inputText label="fecha de afiliacion a pensión"
+						id="idFechaPension" value="#{registro.fechaPension}"
+						class="datepicker" converter="convertidorFecha">
+						<f:validator validatorId="validaObligatorio" />
+					</h:inputText>
+					<h:message for="idFechaPension" style="color: red" />
+				</div>
 			</div>
-			<hr />
-			<div id="divAdministradoraPension">
-				<h:outputLabel for="idAdminPension"
-					value="Administradora de pensión: " />
-				<h:selectOneMenu label="administradora de pensión"
-					id="idAdminPension" value="#{registro.adminPension}">
-					<f:selectItems value="#{registro.administradorasPension}" />
-					<f:validator validatorId="validaObligatorio"/>
-				</h:selectOneMenu>
-				<h:message for="idAdminPension" style="color: red" />
-			</div>
-			<br />
-			<div id="divFechaPension">
-				<h:outputLabel for="idFechaPension"
-					value="Fecha de afiliacion a pensión:" />
-				<h:inputText label="fecha de afiliacion a pensión"
-					id="idFechaPension" value="#{registro.fechaPension}"
-					class="datepicker" converter="convertidorFecha">
-					<f:validator validatorId="validaObligatorio"/>
-				</h:inputText>
-				<h:message for="idFechaPension" style="color: red" />
-			</div>
-			<hr />
+<!-- 			<hr /> -->
 			<div>
-				<h:commandButton id="idBtnRegistrar" value="Guardar" styleClass="button-guardar"
-					action="#{registro.registrar}" onclick="return validarFormulario()">
+				<h:commandButton id="idBtnRegistrar" value="Guardar"
+					styleClass="btn-primary" action="#{registro.registrar}"
+					onclick="return validarFormulario()">
 				</h:commandButton>
 			</div>
 			<h:messages />
@@ -136,7 +141,8 @@
 		<br />
 		<div>
 			<h:form>
-				<h:commandButton id="idBtnVerLista" value="Ver Afiliaciones" action="#{registro.verAfiliaciones}"/>
+				<h:commandButton styleClass="btn-secundary" id="idBtnVerLista"
+					value="Ver Afiliaciones" action="#{registro.verAfiliaciones}" />
 			</h:form>
 		</div>
 	</div>

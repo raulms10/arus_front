@@ -1,13 +1,14 @@
 @charset "UTF-8";
 
 .button-guardar {
-	background-color:#2168a8;
-	color:#ffffff;
+	background-color: #2168a8;
+	color: #ffffff;
 }
 
 table, td, th {
-  border: 1px solid black;
-  border-collapse: collapse;
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-size: large;
 }
 
 h2 {
@@ -18,4 +19,36 @@ h2 {
 
 message {
 	color: red;
+	font-size: large;
+}
+
+.cont-card {
+    padding: 40px 25px 25px;
+    /*display: inline-block;*/
+    margin: 15px;
+    box-shadow: 0 0 20px rgba(187,188,190,.6);
+    position: relative;
+    font-size: large;
+}
+
+.btn-primary {
+    border-radius: 60px;
+    background: #00447c;
+    color: #fff;
+    border: 1px solid #00447c;
+    font-size: large;
+    padding: 10px 22px;
+    height: 45px;
+    margin: 0 8px;
+}
+
+.btn-secundary {
+    border-radius: 60px;
+    background: #dedfe1;
+    color: #5f6062;
+    border: 1px solid #dedfe1;
+    font-size: large;
+    padding: 10px 22px;
+    height: 45px;
+    margin: 0 8px;
 }

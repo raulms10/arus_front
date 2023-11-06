@@ -16,7 +16,6 @@ public class ServicioCrearAfiliacion {
 		Afiliacion afiliacion = FabricaAfiliacion.crearAfiliacion(registroBean);
 		ClienteHttp clienteHttp = new ClienteHttp(CONTEXTO_AFILIACION);
 		String resultado = clienteHttp.doPost(afiliacion);
-		System.out.println("Res: " + resultado);
 		return ("".equals(resultado) ? MENSAJE_EXITOSO : resultado);
 	}
 }

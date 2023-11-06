@@ -9,56 +9,58 @@
 	<link href="../resources/registro.css" rel="stylesheet" type="text/css" />
 </h:head>
 <h:body>
-	<div>
-		<h1>Lista de Afiliaciones</h1>
-	</div>
-	<div id="tablaRegistros">
-		<h:dataTable id="tablaValores" value="#{lista.listAfiliaciones}" var="afiliacion"
-			styleClass="order-table" headerClass="order-table-header"
-			rowClasses="order-table-odd-row,order-table-even-row">
+	<div class="cont-card">
+		<div>
+			<h1>Lista de Afiliaciones</h1>
+		</div>
+		<div id="tablaRegistros" class="cont-card">
+			<h:dataTable id="tablaValores" value="#{lista.listAfiliaciones}"
+				var="afiliacion" styleClass="order-table"
+				headerClass="order-table-header"
+				rowClasses="order-table-odd-row,order-table-even-row">
 
-			<h:column>
-				<f:facet name="header">Documento</f:facet>
-            		#{afiliacion.afiliado.tipoDocumento.codigo} - #{afiliacion.afiliado.tipoDocumento.nombre}
+				<h:column>
+					<f:facet name="header">Documento</f:facet>
+            		#{afiliacion.afiliado.tipoDocumento.codigo} - #{afiliacion.afiliado.numeroDocumento}
         	</h:column>
 
-			<h:column>
-				<f:facet name="header">Nombre completo</f:facet>
+				<h:column>
+					<f:facet name="header">Nombre completo</f:facet>
            			#{afiliacion.afiliado.primerNombre}
            			#{afiliacion.afiliado.segundoNombre}
            			#{afiliacion.afiliado.primerApellido}
            			#{afiliacion.afiliado.segundoApellido}
         	</h:column>
-        	
-        	<h:column>
-				<f:facet name="header">Administradora Salud</f:facet>
+
+				<h:column>
+					<f:facet name="header">Administradora Salud</f:facet>
            			#{afiliacion.administradoraSalud.codigo} - 
            			#{afiliacion.administradoraSalud.nombre}
         	</h:column>
-        	
-        	<h:column>
-				<f:facet name="header">Fecha afiliación Salud</f:facet>
+
+				<h:column>
+					<f:facet name="header">Fecha afiliación Salud</f:facet>
            			#{afiliacion.fechaAfiliacionSalud}
         	</h:column>
-        	
-        	<h:column>
-				<f:facet name="header">Administradora Pensión</f:facet>
+
+				<h:column>
+					<f:facet name="header">Administradora Pensión</f:facet>
            			#{afiliacion.administradoraPension.codigo} - 
            			#{afiliacion.administradoraPension.nombre}
         	</h:column>
-        	
-        	<h:column>
-				<f:facet name="header">Fecha afiliación Pensión</f:facet>
+
+				<h:column>
+					<f:facet name="header">Fecha afiliación Pensión</f:facet>
            			#{afiliacion.fechaAfiliacionPension}
         	</h:column>
-		</h:dataTable>
+			</h:dataTable>
+		</div>
+		<div>
+			<h:form>
+				<h:commandButton class="btn-primary" id="boton" value="Nuevo"
+					action="#{lista.verRegistro}" />
+			</h:form>
+		</div>
 	</div>
-	<div>
-		<h:form>
-			<h:commandButton id="boton" value="Nuevo"
-				action="#{lista.verRegistro}" />
-		</h:form>
-	</div>
-
 </h:body>
 </html>
