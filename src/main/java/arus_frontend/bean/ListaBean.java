@@ -21,6 +21,10 @@ public class ListaBean implements Serializable {
 		listAfiliaciones = ServicioListarAfiliacion.ejecutar();
 	}
 	
+	public void actualizarLista() {
+		listAfiliaciones = ServicioListarAfiliacion.ejecutar();
+	}
+	
 	public String verRegistro() {
 		return "registro";
 	}
